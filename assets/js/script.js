@@ -163,22 +163,30 @@ document.addEventListener("DOMContentLoaded", function () {
   const projects = document.querySelectorAll("[data-filter-item]");
 
   filterButtons.forEach(button => {
-      button.addEventListener("click", () => {
-          // Remove 'active' class from all buttons
-          filterButtons.forEach(btn => btn.classList.remove("active"));
-          button.classList.add("active");
+    button.addEventListener("click", () => {
+      // Remove 'active' class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
 
-          const selectedCategory = button.textContent.trim(); // Get button text (category name)
+      // Get selected category
+      const selectedCategory = button.textContent.trim().toLowerCase();
+      console.log("Selected Category:", selectedCategory); // Debug log
 
-          projects.forEach(project => {
-              const projectCategory = project.getAttribute("data-category");
+      projects.forEach(project => {
+        const projectCategory = project.getAttribute("data-category").trim().toLowerCase();
+        console.log("Checking Project Category:", projectCategory); // Debug log
 
-              if (selectedCategory === "All" || projectCategory === selectedCategory) {
-                  project.style.display = "block"; // Show matching projects
-              } else {
-                  project.style.display = "none"; // Hide non-matching projects
-              }
-          });
+        if (selectedCategory === "all" || projectCategory === selectedCategory) {
+          project.style.display = "block";
+          void project.offsetHeight; // Forces repaint
+          project.style.opacity = "1"; // Ensure visibility
+          console.log("Showing:", project);
+        } else {
+          project.style.display = "none";
+          project.style.opacity = "0";
+          console.log("Hiding:", project);
+        }
       });
+    });
   });
 });
