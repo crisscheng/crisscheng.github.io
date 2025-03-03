@@ -1305,6 +1305,7 @@ textarea.form-input::-webkit-resizer { display: none; }
    */
 
   .clients-item { min-width: calc(33.33% - 10px); }
+  .navbar-link { --fs-8: 14px; }
 
 
 
@@ -1347,8 +1348,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   }
 
-
-
+  
   /**
    * #REUSED STYLE
    */
@@ -1442,7 +1442,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .navbar-list { gap: 20px; }
 
-  .navbar-link { --fs-8: 14px; }
+  .navbar-link { --fs-8: 15px; }
 
 
 
